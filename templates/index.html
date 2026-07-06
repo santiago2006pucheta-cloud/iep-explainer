@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IEP Explainer — Understand your child's IEP</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <h1 class="wordmark">IEP Explainer</h1>
+      <p class="tagline">Understand your child's IEP and walk into the meeting prepared.</p>
+    </header>
+
+    <main class="card">
+      <form id="explain-form" novalidate>
+        <div class="upload-block">
+          <label for="document" class="field-label">Upload your child's IEP (PDF or .txt)</label>
+          <input type="file" id="document" name="document" accept=".pdf,.txt">
+        </div>
+
+        <div class="divider" role="separator">
+          <span>or paste it below</span>
+        </div>
+
+        <label for="text" class="field-label">Paste the IEP text</label>
+        <textarea
+          id="text"
+          name="text"
+          rows="8"
+          placeholder="Paste the text of your child's IEP here…"
+          aria-describedby="privacy-note"
+        ></textarea>
+
+        <p id="privacy-note" class="privacy-note">
+          Your document is sent to OpenAI to generate the explanation and isn't stored. Consider removing your child's name first.
+        </p>
+
+        <button type="submit" class="submit-btn" id="submit-btn">Explain my IEP</button>
+      </form>
+
+      <div id="results" class="results" aria-live="polite"></div>
+    </main>
+
+    <footer class="site-footer">
+      <p>This is a preparation aid to help you understand your IEP — not legal or educational advice.</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
